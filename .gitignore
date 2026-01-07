@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# OS misc
+.DS_Store
+Thumbs.db

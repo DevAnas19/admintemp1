@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Admin Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Using Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <i class="fa-solid fa-cube"></i> <span>NEXUS</span>
+            </div>
+            <!-- Pin Toggle -->
+            <label class="pin-toggle" title="Pin Sidebar">
+                <input type="checkbox" id="sidebar-pin">
+                <span class="pin-slider"></span>
+            </label>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="menu-item active" data-target="dashboard">
+                <i class="fa-solid fa-chart-line menu-icon"></i>
+                <span>Dashboard</span>
+            </li>
+            <li class="menu-item" data-target="products">
+                <i class="fa-solid fa-box menu-icon"></i>
+                <span>Products</span>
+            </li>
+            <li class="menu-item" data-target="customers">
+                <i class="fa-solid fa-users menu-icon"></i>
+                <span>Customers</span>
+            </li>
+            <li class="menu-item">
+                <i class="fa-solid fa-chart-pie menu-icon"></i>
+                <span>Analytics</span>
+            </li>
+            <li class="menu-item">
+                <i class="fa-solid fa-gear menu-icon"></i>
+                <span>Settings</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar d-flex justify-content-between align-items-center">
+
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass" style="color: var(--color-secondary);"></i>
+                <input type="text" class="search-input" placeholder="Search...">
+            </div>
+
+            <div class="other-menus-topbar">
+                <div class="dark-light">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+
+                <div class="language">
+                    <i class="fa-solid fa-language"></i>
+                </div>
+
+                <div class="shortcut">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+
+                <div class="notification">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+            </div>
+
+            <div class="user-profile">
+                <!-- Using a random avatar helper -->
+                <div style="text-align: right; margin-right: 10px;">
+                    <div style="font-weight: bold; font-size: 0.9rem;">John Doe</div>
+                    <div style="font-size: 0.8rem; color: #777;">Admin</div>
+                </div>
+                <img src="https://ui-avatars.com/api/?name=John+Doe&background=547792&color=fff" alt="User"
+                    class="user-img">
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-container container-fluid">
+
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="section-content">
+                <!-- Welcome -->
+                <h2 class="mb-4" style="color: var(--color-primary);">Dashboard Overview</h2>
+
+                <!-- Stats Grid -->
+                <div class="row g-4 mb-4">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-title">Total Sales</div>
+                            <div class="card-value">$24,500</div>
+                            <div style="color: green; font-size: 0.8rem; margin-top: 5px;">
+                                <i class="fa-solid fa-arrow-up"></i> +5.2% since last month
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-title">New Users</div>
+                            <div class="card-value">1,250</div>
+                            <div style="color: green; font-size: 0.8rem; margin-top: 5px;">
+                                <i class="fa-solid fa-arrow-up"></i> +12% since last month
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-title">Pending Orders</div>
+                            <div class="card-value">45</div>
+                            <div style="color: orange; font-size: 0.8rem; margin-top: 5px;">
+                                <i class="fa-regular fa-clock"></i> 3 urgent
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-title">Revenue</div>
+                            <div class="card-value">$68,900</div>
+                            <div style="color: green; font-size: 0.8rem; margin-top: 5px;">
+                                <i class="fa-solid fa-arrow-up"></i> +8.4% since last month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Grid (Charts/Tables) -->
+                <div class="row g-4">
+
+                    <!-- Recent Orders Table -->
+                    <div class="col-12 col-lg-8">
+                        <div class="panel h-100">
+                            <h3>Recent Orders</h3>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer</th>
+                                            <th>Product</th>
+                                            <th>Status</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#12345</td>
+                                            <td>Alice Smith</td>
+                                            <td>Wireless Headphones</td>
+                                            <td><span class="status active">Completed</span></td>
+                                            <td>$120.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>#12346</td>
+                                            <td>Bob Jones</td>
+                                            <td>Smart Watch</td>
+                                            <td><span class="status pending">Pending</span></td>
+                                            <td>$250.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>#12347</td>
+                                            <td>Charlie Day</td>
+                                            <td>Laptop Stand</td>
+                                            <td><span class="status active">Completed</span></td>
+                                            <td>$45.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>#12348</td>
+                                            <td>Diana Prince</td>
+                                            <td>Monitor 27"</td>
+                                            <td><span class="status pending">Processing</span></td>
+                                            <td>$320.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Simple Messages/Activity Widget -->
+                    <div class="col-12 col-lg-4">
+                        <div class="panel h-100">
+                            <h3>Recent Activity</h3>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li
+                                    style="margin-bottom: 15px; border-left: 2px solid var(--color-accent); padding-left: 10px;">
+                                    <div style="font-weight: bold; font-size: 0.9rem;">New User Registered</div>
+                                    <div style="font-size: 0.8rem; color: #666;">5 minutes ago</div>
+                                </li>
+                                <li
+                                    style="margin-bottom: 15px; border-left: 2px solid var(--color-secondary); padding-left: 10px;">
+                                    <div style="font-weight: bold; font-size: 0.9rem;">Server Restarted</div>
+                                    <div style="font-size: 0.8rem; color: #666;">2 hours ago</div>
+                                </li>
+                                <li
+                                    style="margin-bottom: 15px; border-left: 2px solid var(--color-primary); padding-left: 10px;">
+                                    <div style="font-weight: bold; font-size: 0.9rem;">Payment Received</div>
+                                    <div style="font-size: 0.8rem; color: #666;">4 hours ago</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="products-section" class="section-content d-none">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 style="color: var(--color-primary);">Products Management</h2>
+                    <button id="addProductBtn" class="btn btn-secondary"
+                        style="background-color: var(--color-secondary); border: none;">
+                        <i class="fa-solid fa-plus"></i> Add New Product
+                    </button>
+                </div>
+
+                <!-- Product Stats -->
+                <div class="row g-4 mb-4">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-title">Total Products</div>
+                            <div class="card-value">124</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-title">Low Stock</div>
+                            <div class="card-value">8</div>
+                            <div style="color: orange; font-size: 0.8rem; margin-top: 5px;">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Needs Attention
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-title">Categories</div>
+                            <div class="card-value">12</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Charts -->
+                <div class="row g-4 mb-4">
+                    <div class="col-12 col-lg-8">
+                        <div class="panel h-100">
+                            <h3>Product Sales</h3>
+                            <canvas id="productSalesChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="panel h-100">
+                            <h3>Stock Distribution</h3>
+                            <canvas id="stockStatusChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="panel">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Product Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1001</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div
+                                                style="width: 30px; height: 30px; background: #ddd; border-radius: 4px;">
+                                            </div>
+                                            <span>Wireless Headphones</span>
+                                        </div>
+                                    </td>
+                                    <td>Electronics</td>
+                                    <td>$120.00</td>
+                                    <td>45</td>
+                                    <td><span class="status active">In Stock</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-light"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="btn btn-sm btn-light text-danger"><i
+                                                class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1002</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div
+                                                style="width: 30px; height: 30px; background: #ddd; border-radius: 4px;">
+                                            </div>
+                                            <span>Smart Watch</span>
+                                        </div>
+                                    </td>
+                                    <td>Electronics</td>
+                                    <td>$250.00</td>
+                                    <td>12</td>
+                                    <td><span class="status active">In Stock</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-light"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="btn btn-sm btn-light text-danger"><i
+                                                class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1003</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div
+                                                style="width: 30px; height: 30px; background: #ddd; border-radius: 4px;">
+                                            </div>
+                                            <span>Leather Wallet</span>
+                                        </div>
+                                    </td>
+                                    <td>Accessories</td>
+                                    <td>$45.00</td>
+                                    <td>0</td>
+                                    <td><span class="status pending">Out of Stock</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-light"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="btn btn-sm btn-light text-danger"><i
+                                                class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Section -->
+            <div id="customers-section" class="section-content d-none">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 style="color: var(--color-primary);">Customer Directory</h2>
+                    <div class="filter-group">
+                        <button class="btn btn-outline-secondary active">All</button>
+                        <button class="btn btn-outline-secondary">VIP</button>
+                        <button class="btn btn-outline-secondary">New</button>
+                    </div>
+                </div>
+
+                <!-- Customer Grid Container -->
+                <div class="customer-grid" id="customerGrid">
+                    <!-- Cards will be injected via JS -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addProductForm">
+                        <div class="mb-3">
+                            <label for="productName" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="productName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="productCategory" class="form-label">Category</label>
+                            <select class="form-select" id="productCategory" required>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Accessories">Accessories</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="productPrice" class="form-label">Price ($)</label>
+                            <input type="number" class="form-control" id="productPrice" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="productStock" class="form-label">Stock</label>
+                            <input type="number" class="form-control" id="productStock" required>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary"
+                                style="background-color: var(--color-secondary); border: none;">Add Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
