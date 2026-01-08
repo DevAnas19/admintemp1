@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         initProductCharts();
                     } else if (target === 'customers') {
                         renderCustomers();
+                    } else if (target === 'calendar') {
+                        renderCalendar(currentMonth, currentYear);
                     }
                 }
             }
@@ -332,6 +334,137 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="contact-btn">View Profile</button>
             `;
             grid.appendChild(card);
+        });
+    }
+
+
+    // Calendar Logic
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+    let selectedDate = null;
+    let events = {}; // Format: { "YYYY-MM-DD": [{title, time}] }
+
+    function renderCalendar(month, year) {
+        const calendarContainer = document.getElementById('calendar');
+        if (!calendarContainer) return;
+
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+
+        // Header
+        let html = `
+            <div class="calendar-header">
+                 <button id="prevMonth" class="btn btn-sm btn-light"><i class="fa-solid fa-chevron-left"></i></button>
+                 <h3>${months[month]} ${year}</h3>
+                 <button id="nextMonth" class="btn btn-sm btn-light"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar-days-header">
+                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+            </div>
+            <div class="calendar-grid-days">
+        `;
+
+        // Empty cells for days before the 1st
+        for (let i = 0; i < firstDay; i++) {
+            html += `<div class="day-cell empty"></div>`;
+        }
+
+        // Day cells
+        const today = new Date();
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+            const isToday = i === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+            const isSelected = selectedDate === dateStr;
+            const hasEvent = events[dateStr] && events[dateStr].length > 0;
+
+            html += `<div class="day-cell ${isToday ? 'current-day' : ''} ${isSelected ? 'selected-day' : ''} ${hasEvent ? 'has-event' : ''}" data-date="${dateStr}">${i}</div>`;
+        }
+
+        html += `</div>`;
+        calendarContainer.innerHTML = html;
+
+        // Attach Navigation Listeners
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            currentMonth--;
+            if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            currentMonth++;
+            if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        // Attach Day Click Listeners
+        document.querySelectorAll('.day-cell:not(.empty)').forEach(cell => {
+            cell.addEventListener('click', () => {
+                selectedDate = cell.getAttribute('data-date');
+                renderCalendar(currentMonth, currentYear); // Re-render to update selection style
+                updateEventPanel();
+            });
+        });
+    }
+
+    // Event Panel Logic
+    function updateEventPanel() {
+        const header = document.getElementById('selectedDateHeader');
+        const list = document.getElementById('eventsList');
+
+        if (!selectedDate) {
+            header.textContent = "Select a date";
+            list.innerHTML = '<p class="text-muted small">Click a date to view/add events.</p>';
+            return;
+        }
+
+        // Format Date for Header
+        const dateObj = new Date(selectedDate);
+        header.textContent = dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+
+        // Show Events
+        const dayEvents = events[selectedDate] || [];
+        if (dayEvents.length === 0) {
+            list.innerHTML = '<p class="text-muted small" style="color:var(--color-primary);">No events scheduled.</p>';
+        } else {
+            list.innerHTML = dayEvents.map((e, index) => `
+                <div class="alert alert-light border d-flex justify-content-between align-items-center p-2 mb-2">
+                    <div>
+                        <div style="font-weight: bold; font-size: 0.9rem;">${e.title}</div>
+                        <div style="font-size: 0.8rem; color: #666;">${e.time}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    // Add Event Listener
+    const addEventBtn = document.getElementById('addEventBtn');
+    if (addEventBtn) {
+        addEventBtn.addEventListener('click', () => {
+            if (!selectedDate) {
+                alert("Please select a date first.");
+                return;
+            }
+            const title = document.getElementById('eventTitle').value;
+            const time = document.getElementById('eventTime').value;
+
+            if (title && time) {
+                if (!events[selectedDate]) events[selectedDate] = [];
+                events[selectedDate].push({ title, time });
+
+                // Clear inputs
+                document.getElementById('eventTitle').value = '';
+                document.getElementById('eventTime').value = '';
+
+                // Refresh UI
+                updateEventPanel();
+                renderCalendar(currentMonth, currentYear); // Updates the dot indicator
+            }
         });
     }
 

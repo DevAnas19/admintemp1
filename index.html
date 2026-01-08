@@ -49,6 +49,10 @@
                 <i class="fa-solid fa-gear menu-icon"></i>
                 <span>Settings</span>
             </li>
+            <li class="menu-item" data-target="calendar">
+                <i class="fa-solid fa-calendar menu-icon"></i>
+                <span>Calendar</span>
+            </li>
         </ul>
     </nav>
 
@@ -369,6 +373,38 @@
                     <!-- Cards will be injected via JS -->
                 </div>
             </div>
+
+            <div id="calendar-section" class="section-content d-none">
+                <div class="calendar-wrapper d-flex gap-4">
+                    <!-- Calendar Side -->
+                    <div class="calendar-container flex-grow-1">
+                        <div id="calendar"></div>
+                    </div>
+
+                    <!-- Event Side Panel -->
+                    <div class="event-panel" style="min-width: 300px;">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <h4 id="selectedDateHeader" class="mb-3" style="color: var(--color-primary);">Select a date
+                            </h4>
+
+                            <!-- Event List -->
+                            <div id="eventsList" class="mb-3" style="max-height: 300px; overflow-y: auto;">
+                                <p class="text-muted small" style="color:var(--color-primary);">No events scheduled.</p>
+                            </div>
+
+                            <!-- Add Event Form -->
+                            <div class="mt-auto pt-3 border-top">
+                                <h5 class="mb-2" style="color:var(--color-primary);">Add Event</h5>
+                                <input type="text" id="eventTitle" class="form-control mb-2" placeholder="Event Title">
+                                <input type="time" id="eventTime" class="form-control mb-2">
+                                <button id="addEventBtn" class="btn btn-primary w-100"
+                                    style="background-color: var(--color-secondary); border: none;">Add Event</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </main>
