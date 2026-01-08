@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show Events
         const dayEvents = events[selectedDate] || [];
         if (dayEvents.length === 0) {
-            list.innerHTML = '<p class="text-muted small" style="color:var(--color-primary);">No events scheduled.</p>';
+            list.innerHTML = '<p class="text-muted small" style="color:var(--color-primary);"?>No events scheduled.</p>';
         } else {
             list.innerHTML = dayEvents.map((e, index) => `
                 <div class="alert alert-light border d-flex justify-content-between align-items-center p-2 mb-2">
