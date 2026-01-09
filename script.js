@@ -374,6 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
             html += `<div class="day-cell empty"></div>`;
         }
 
+
         // Day cells
         const today = new Date();
         for (let i = 1; i <= daysInMonth; i++) {
@@ -466,6 +467,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderCalendar(currentMonth, currentYear); // Updates the dot indicator
             }
         });
+
     }
+
+
 
 });

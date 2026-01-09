@@ -647,3 +647,12 @@ input:checked+.pin-slider:before {
 .day-cell.empty {
     cursor: default;
 }
+
+.footer-container {
+    background-color: var(--color-white);
+    color: var(--color-secondary);
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 15px;
+}
