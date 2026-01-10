@@ -195,7 +195,7 @@ input:checked+.pin-slider:before {
 
 .sidebar-menu {
     list-style: none;
-    padding: 20px 0;
+    padding: 0px 0;
     flex: 1;
 }
 
@@ -723,4 +723,70 @@ body.dark-mode .form-select {
 body.dark-mode .form-check-input:checked {
     background-color: var(--color-secondary);
     border-color: var(--color-secondary);
+}
+
+/* Sidebar Submenu Styles */
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    list-style: none;
+    margin-right: 20px;
+    opacity: 0;
+    transition: all 0.4s ease;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.submenu.open {
+    max-height: 500px;
+    /* Arbitrary large height for animation */
+    opacity: 1;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.submenu-item {
+    margin-bottom: 2px;
+}
+
+/* Submenu Arrow Rotation */
+.submenu-arrow {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.has-submenu.open>div>.submenu-arrow {
+    transform: rotate(90deg);
+}
+
+/* Text visibility in mini-sidebar */
+.sidebar:not(:hover):not(.pinned) .submenu {
+    display: none !important;
+}
+
+.sidebar:not(:hover):not(.pinned) .submenu-arrow {
+    display: none;
+}
+
+/* Fix for Vertical Stacking of Submenu */
+.menu-item.has-submenu {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.submenu-item.has-submenu {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Fix for Mini Sidebar Alignment */
+.sidebar:not(:hover):not(.pinned) .menu-header {
+    justify-content: center !important;
+    padding-left: 0;
+}
+
+.sidebar:not(:hover):not(.pinned) .menu-header>div {
+    /* The inner div containing icon + text */
+    justify-content: center;
 }

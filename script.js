@@ -486,4 +486,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Nested Menu Toggle
+    const submenuTriggers = document.querySelectorAll('.has-submenu > div');
+    submenuTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // Prevent triggering parent menu actions
+
+            const parentLi = trigger.parentElement;
+            const submenu = parentLi.querySelector('.submenu');
+
+            // Toggle open class
+            parentLi.classList.toggle('open');
+            submenu.classList.toggle('open');
+        });
+    });
+
 });
