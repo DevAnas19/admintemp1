@@ -413,25 +413,30 @@
                 <div class="container row mt-5 d-flex justify-content-center align-items-center">
                     <div class="col-8 md-6">
                         <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Form</h4>
+                            <div class="card-header" style="background-color: var(--color-primary);">
+                                <h4 class="card-title pt-2 fs-5">Form</h4>
                             </div>
                             <div class="card-body">
                                 <form>
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name">
+                                        <input type="text" class="form-control" id="name" placeholder="User Name">
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                                         <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp">
+                                            aria-describedby="emailHelp" placeholder="xyz@gamil.com">
                                         <div id="emailHelp" class="form-text">We'll never share your email with anyone
                                             else.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="exampleInputPassword1">
+                                            <span class="input-group-text toggle-password" style="cursor: pointer;">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="birthday" class="form-label">Birthday</label>
@@ -439,26 +444,35 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="gender" class="form-label">Gender</label>
-                                        <div class="form-check d-flex gap-2">
-                                            <input type="radio" name="gender" id="male" value="male">
-                                            <label for="male">Male</label>
-                                            <input type="radio" name="gender" id="female" value="female">
-                                            <label for="female">Female</label>
-                                            <input type="radio" name="gender" id="other" value="other">
-                                            <label for="other">Other</label>
+                                        <div class="form-check d-flex gap-5">
+                                            <div class="male-check-box d-flex align-items-center gap-2">
+                                                <input type="radio" class="form-check-input" name="gender" id="male"
+                                                    value="male">
+                                                <label for="male" class="form-check-label">Male</label>
+                                            </div>
+                                            <div class="male-check-box d-flex align-items-center gap-2">
+                                                <input type="radio" class="form-check-input" name="gender" id="female"
+                                                    value="female">
+                                                <label for="female" class="form-check-label">Female</label>
+                                            </div>
+                                            <div class="male-check-box d-flex align-items-center gap-2">
+                                                <input type="radio" class="form-check-input" name="gender" id="other"
+                                                    value="other">
+                                                <label for="other" class="form-check-label">Other</label>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="country" class="form-label">Country</label>
                                         <select class="form-select" id="country">
-                                            <option selected>Choose...</option>
-                                            <option>...</option>
+                                            <option class="selected" selected>Choose...</option>
+                                            <option class="selected">...</option>
                                         </select>
                                     </div>
-
-                                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
-
+                                    <div class="submit-btn d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

@@ -374,7 +374,6 @@ document.addEventListener('DOMContentLoaded', () => {
             html += `<div class="day-cell empty"></div>`;
         }
 
-
         // Day cells
         const today = new Date();
         for (let i = 1; i <= daysInMonth; i++) {
@@ -409,6 +408,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderCalendar(currentMonth, currentYear); // Re-render to update selection style
                 updateEventPanel();
             });
+        });
+    }
+
+    // Password Toggle Logic
+    const togglePasswordBtn = document.querySelector('.toggle-password');
+    const passwordInput = document.getElementById('exampleInputPassword1');
+
+    if (togglePasswordBtn && passwordInput) {
+        togglePasswordBtn.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // Toggle Icon
+            const icon = togglePasswordBtn.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-eye');
+                icon.classList.toggle('fa-eye-slash');
+            }
         });
     }
 
@@ -467,9 +484,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderCalendar(currentMonth, currentYear); // Updates the dot indicator
             }
         });
-
     }
-
-
 
 });
