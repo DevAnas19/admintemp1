@@ -59,20 +59,20 @@
             </li>
             <li class="menu-item has-submenu">
                 <div class="menu-header d-flex align-items-center justify-content-between w-100">
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-2">
                         <i class="fa-solid fa-lock menu-icon"></i>
                         <span>Authentication</span>
                     </div>
                     <i class="fa-solid fa-chevron-right submenu-arrow p-2"></i>
                 </div>
-                <ul class="submenu p-2">
+                <ul class="submenu">
                     <li class="submenu-item has-submenu">
                         <div class="d-flex align-items-center justify-content-between w-90 m-1 ">
                             <span>Login</span>
                             <i class="fa-solid fa-chevron-right submenu-arrow"></i>
                         </div>
                         <ul class="submenu m-0 p-0">
-                            <li class="menu-item submenu-link" data-target="Basic-Login">
+                            <li class="menu-item submenu-link" data-target="basic-login">
                                 <span>Basic Login</span>
                             </li>
                         </ul>
@@ -83,7 +83,7 @@
                             <i class="fa-solid fa-chevron-right submenu-arrow"></i>
                         </div>
                         <ul class="submenu m-0 p-0">
-                            <li class="menu-item submenu-link" data-target="Basic-Register">
+                            <li class="menu-item submenu-link" data-target="basic-register">
                                 <span>Basic Register</span>
                             </li>
                         </ul>
@@ -517,7 +517,7 @@
                 <div class="container row mt-5 mb-5 d-flex justify-content-center align-items-center">
                     <div class="col-10 md-6">
                         <div class="card">
-                            <div class="card-header" style="background-color: var(--color-primary);">
+                            <div class="card-header" style="background-color: var(--color-secondary);">
                                 <h4 class="card-title pt-2 fs-5">Shipping Information</h4>
                             </div>
                             <div class="card-body">
@@ -582,6 +582,49 @@
                                             Order</button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="basic-login-section" class="section-content d-none">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="login-container col-md-5 p-0">
+                            <div class="card">
+                                <div class="card-header text-center login-text-secondary">
+                                    <h3><i class="fa-solid fa-cube"></i> NEXUS</h3>
+                                </div>
+                                <div class="text-center mb-4 mt-2 login-text-secondary">
+                                    <span class="d-block">Welcome to NEXUS! 👋</span>
+                                    <span class="d-block small">Please sign-in to your account and start the
+                                        adventure</span>
+                                </div>
+                                <div class="card-body">
+                                    <form id="basic-login-form m-2">
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email address</label>
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="name@example.com">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="password">
+                                        </div>
+                                        <div class="forgot-pass">
+                                            <div class="remember-me-wrap">
+                                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                                            </div>
+                                            <a href="#">Forgot Password?</a>
+                                        </div>
+                                        <div class="login-btn d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-primary w-100"
+                                                style="background-color: var(--color-secondary); border-color: var(--color-secondary);">login</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

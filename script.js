@@ -503,3 +503,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+// Basic Login Form Submission
+const basicLoginForm = document.getElementById('basic-login-form');
+if (basicLoginForm) {
+    basicLoginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Simple validation or simulation
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (email && password) {
+            // Determine destination based on screen size or just default
+            const sections = document.querySelectorAll('.section-content');
+            const menuItems = document.querySelectorAll('.menu-item');
+
+            alert(`Login Successful! Welcome back.`);
+
+            // Redirect to dashboard (simulate)
+            // Hide login, show dashboard
+            sections.forEach(section => section.classList.add('d-none'));
+            document.getElementById('dashboard-section').classList.remove('d-none');
+
+            // Update sidebar active state
+            menuItems.forEach(i => i.classList.remove('active'));
+            document.querySelector('[data-target="dashboard"]').classList.add('active');
+        } else {
+            alert('Please enter both email and password.');
+        }
+    });
+}
+
+
