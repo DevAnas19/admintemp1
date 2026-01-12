@@ -412,22 +412,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Password Toggle Logic
-    const togglePasswordBtn = document.querySelector('.toggle-password');
-    const passwordInput = document.getElementById('exampleInputPassword1');
+    const togglePasswordBtns = document.querySelectorAll('.toggle-password');
 
-    if (togglePasswordBtn && passwordInput) {
-        togglePasswordBtn.addEventListener('click', () => {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
+    togglePasswordBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Find the input field associated with this toggle button
+            // Assuming structure: <input> <span class="toggle-password">
+            const passwordInput = btn.previousElementSibling;
 
-            // Toggle Icon
-            const icon = togglePasswordBtn.querySelector('i');
-            if (icon) {
-                icon.classList.toggle('fa-eye');
-                icon.classList.toggle('fa-eye-slash');
+            if (passwordInput) {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                // Toggle Icon
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-eye');
+                    icon.classList.toggle('fa-eye-slash');
+                }
             }
         });
-    }
+    });
 
     // Event Panel Logic
     function updateEventPanel() {
