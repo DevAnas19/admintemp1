@@ -851,3 +851,14 @@ body.dark-mode .form-check-input:checked {
 .card-header .card-title {
     color: var(--color-white) !important;
 }
+
+.other-login-types {
+    border-radius: 25px;
+    color: var(--color-secondary);
+}
+
+.other-login-types:hover {
+    color: var(--color-white);
+    background-color: var(--color-secondary);
+    box-shadow: 0px 0px 15px rgba(84, 119, 146, 0.781);
+}
