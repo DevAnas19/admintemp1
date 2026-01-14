@@ -667,6 +667,10 @@ body.dark-mode .input-group-text {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
+body.dark-mode .btn-primary:hover {
+    color: var(--color-white);
+}
+
 body.dark-mode .form-control:focus,
 body.dark-mode .form-select:focus {
     background-color: var(--color-bg);
@@ -704,12 +708,14 @@ body.dark-mode .form-check-label {
 }
 
 .btn-primary {
-    border: 1px solid var(--color-primary);
+    border: none;
+    background-color: var(--color-white);
 }
 
 .btn-primary:hover {
-    border: 1px solid var(--color-secondary);
+    color: var(--color-bg);
     box-shadow: 0px 0px 15px rgba(84, 119, 146, 0.781);
+    background-color: var(--color-accent);
 }
 
 body.dark-mode .form-control::placeholder {
@@ -799,7 +805,7 @@ body.dark-mode .form-check-input:checked {
 }
 
 .login-container {
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .login-container:hover {
@@ -833,6 +839,10 @@ body.dark-mode .form-check-input:checked {
 
 .login-text-secondary {
     color: var(--color-secondary) !important;
+}
+
+.login-btn {
+    margin-bottom: 20px;
 }
 
 .remember-me-wrap {
@@ -888,13 +898,13 @@ body.dark-mode .form-check-input:checked {
 }
 
 .profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 5px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
     border: 5px solid var(--color-white);
     background-color: var(--color-bg);
     object-fit: cover;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0px 0px 25px rgba(84, 119, 146, 0.781);
 }
 
 .profile-info h3 {
@@ -998,12 +1008,28 @@ body.dark-mode .form-check-input:checked {
 }
 
 .card {
-    background-color: var(--color-bg);
+    background-color: var(--color-white);
 }
 
 .card-main {
     border-radius: 10px;
     background-color: var(--color-white);
+    box-shadow: 0px 0px 5px rgba(84, 119, 146, 0.6);
+}
+
+.card-profile {
+    background-color: var(--color-bg);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(84, 119, 146, 0.6);
+}
+
+.card-profile:hover {
+    box-shadow: 0px 0px 15px rgba(84, 119, 146, 0.781);
+}
+
+.login-card-body {
+    border-bottom: 1px solid var(--color-secondary);
 }
 
 .team-avatar-group img:first-child {
