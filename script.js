@@ -65,6 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         renderCustomers();
                     } else if (target === 'calendar') {
                         renderCalendar(currentMonth, currentYear);
+                    } else if (target === 'tables') {
+                        initTables();
                     }
                 }
             }
@@ -541,3 +543,120 @@ if (basicLoginForm) {
 }
 
 
+
+
+/* Table & Pagination Logic */
+const tableData = {
+    'table-basic': Array.from({ length: 15 }, (_, i) => ({ id: i + 1, first: `First${i}`, last: `Last${i}`, user: `@user${i}` })),
+    'table-striped': Array.from({ length: 18 }, (_, i) => ({ id: 100 + i, product: `Product ${i}`, category: ['Electronics', 'Home', 'Garden'][i % 3], price: `$${(i * 10.5).toFixed(2)}` })),
+    'table-bordered': Array.from({ length: 12 }, (_, i) => ({ invoice: `INV-${2000 + i}`, client: `Client ${i}`, date: `2024-01-${(i % 30) + 1}`, amount: `$${(i * 100).toFixed(2)}` })),
+    'table-dark': Array.from({ length: 10 }, (_, i) => ({ task: `Task ${i}`, team: ['Alpha', 'Beta', 'Gamma'][i % 3], progress: `${Math.floor(Math.random() * 100)}%`, status: ['Active', 'Pending', 'Done'][i % 3] })),
+    'table-hover': Array.from({ length: 20 }, (_, i) => ({ ticket: `#${5000 + i}`, subject: `Issue ${i}`, priority: ['High', 'Medium', 'Low'][i % 3], status: ['Open', 'Closed', 'In Progress'][i % 3] })),
+    'table-js-client': [
+        { id: 'CL-001', company: 'Tech Solutions', contact: 'Alice Johnson', country: 'USA' },
+        { id: 'CL-002', company: 'Green Earth', contact: 'Bob Smith', country: 'Canada' },
+        { id: 'CL-003', company: 'Innovate Ltd', contact: 'Charlie Brown', country: 'UK' },
+        { id: 'CL-004', company: 'SoftSystems', contact: 'David Lee', country: 'Japan' },
+        { id: 'CL-005', company: 'Alpha Corp', contact: 'Eva Green', country: 'Germany' },
+        { id: 'CL-006', company: 'Beta Inc', contact: 'Frank White', country: 'France' },
+        { id: 'CL-007', company: 'Gamma Group', contact: 'Grace Hall', country: 'Italy' },
+        { id: 'CL-008', company: 'Delta Ops', contact: 'Hank Hill', country: 'USA' },
+        { id: 'CL-009', company: 'Epsilon Arts', contact: 'Ivy Rose', country: 'Spain' },
+        { id: 'CL-010', company: 'Omega Tech', contact: 'Jack King', country: 'Brazil' },
+        { id: 'CL-011', company: 'Zeta Zones', contact: 'Karen Clark', country: 'Australia' },
+        { id: 'CL-012', company: 'Theta Things', contact: 'Leo Scott', country: 'Mexico' }
+    ]
+};
+
+const itemsPerPage = 5;
+const currentPages = {
+    'table-basic': 1,
+    'table-striped': 1,
+    'table-bordered': 1,
+    'table-dark': 1,
+    'table-hover': 1,
+    'table-js-client': 1
+};
+
+function initTables() {
+    // Render all tables initially
+    Object.keys(tableData).forEach(tableId => {
+        renderTable(tableId, currentPages[tableId]);
+        renderPagination(tableId);
+    });
+}
+
+function renderTable(tableId, page) {
+    const tableBody = document.querySelector(`#${tableId} tbody`);
+    if (!tableBody) return;
+    tableBody.innerHTML = '';
+
+    const data = tableData[tableId];
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const pageData = data.slice(start, end);
+
+    const hasCheckbox = ['table-basic', 'table-hover'].includes(tableId);
+
+    pageData.forEach(row => {
+        const tr = document.createElement('tr');
+
+        // Add Checkbox Cell
+        if (hasCheckbox) {
+            const tdCheckbox = document.createElement('td');
+            tdCheckbox.innerHTML = `<input type="checkbox" class="form-check-input">`;
+            tr.appendChild(tdCheckbox);
+        }
+
+        Object.values(row).forEach(val => {
+            const td = document.createElement('td');
+            td.textContent = val;
+            tr.appendChild(td);
+        });
+        tableBody.appendChild(tr);
+    });
+}
+
+function renderPagination(tableId) {
+    const pagination = document.getElementById(tableId.replace('table', 'pagination'));
+    if (!pagination) return;
+    pagination.innerHTML = '';
+
+    const data = tableData[tableId];
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+    const currentPage = currentPages[tableId];
+
+    // Prev
+    const prevLi = document.createElement('li');
+    prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+    prevLi.innerHTML = `<a class="page-link" href="#">Previous</a>`;
+    prevLi.onclick = (e) => { e.preventDefault(); changePage(tableId, currentPage - 1); };
+    pagination.appendChild(prevLi);
+
+    // Numbers display logic (simple: show all)
+    // For better UX with many pages, we might want to truncate, but for now simple is fine.
+    for (let i = 1; i <= totalPages; i++) {
+        const li = document.createElement('li');
+        li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        li.onclick = (e) => { e.preventDefault(); changePage(tableId, i); };
+        pagination.appendChild(li);
+    }
+
+    // Next
+    const nextLi = document.createElement('li');
+    nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+    nextLi.innerHTML = `<a class="page-link" href="#">Next</a>`;
+    nextLi.onclick = (e) => { e.preventDefault(); changePage(tableId, currentPage + 1); };
+    pagination.appendChild(nextLi);
+}
+
+function changePage(tableId, newPage) {
+    const data = tableData[tableId];
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+    if (newPage < 1 || newPage > totalPages) return;
+
+    currentPages[tableId] = newPage;
+    renderTable(tableId, newPage);
+    renderPagination(tableId);
+}

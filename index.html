@@ -41,9 +41,9 @@
                 <i class="fa-solid fa-users menu-icon"></i>
                 <span>Customers</span>
             </li>
-            <li class="menu-item">
-                <i class="fa-solid fa-chart-pie menu-icon"></i>
-                <span>Analytics</span>
+            <li class="menu-item" data-target="tables">
+                <i class="fa-solid fa-table menu-icon"></i>
+                <span>Tables</span>
             </li>
             <li class="menu-item" data-target="calendar">
                 <i class="fa-solid fa-calendar menu-icon"></i>
@@ -408,6 +408,156 @@
                 <!-- Customer Grid Container -->
                 <div class="customer-grid" id="customerGrid">
                     <!-- Cards will be injected via JS -->
+                </div>
+            </div>
+
+            <!-- Tables Section -->
+            <div id="tables-section" class="section-content d-none">
+                <h2 class="mb-4" style="color: var(--color-primary);">Tables & Pagination</h2>
+
+                <div class="row g-4">
+                    <!-- Basic Table -->
+                    <div class="col-12">
+                        <div class="panel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="m-0">Basic Table</h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table" id="table-basic">
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox" class="form-check-input"></th>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <nav class="d-flex justify-content-end mt-3">
+                                    <ul class="pagination" id="pagination-basic"></ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Striped Rows -->
+                    <div class="col-12">
+                        <div class="panel">
+                            <h3 class="mb-3">Striped Rows</h3>
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Product</th>
+                                            <th>Category</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <nav class="d-flex justify-content-end mt-3">
+                                    <ul class="pagination" id="pagination-striped"></ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bordered Table -->
+                    <div class="col-12">
+                        <div class="panel">
+                            <h3 class="mb-3">Bordered Table</h3>
+                            <div class="table-responsive">
+                                <table class="table table-bordered border-primary" id="table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Invoice</th>
+                                            <th>Client</th>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <nav class="d-flex justify-content-end mt-3">
+                                    <ul class="pagination" id="pagination-bordered"></ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dark Table -->
+                    <div class="col-12">
+                        <div class="panel bg-dark text-white">
+                            <h3 class="mb-3 text-white">Dark Table</h3>
+                            <div class="table-responsive">
+                                <table class="table table-dark table-hover mb-0" id="table-dark">
+                                    <thead>
+                                        <tr>
+                                            <th>Project</th>
+                                            <th>Team</th>
+                                            <th>Progress</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <nav class="d-flex justify-content-end mt-3">
+                                    <ul class="pagination pagination-dark" id="pagination-dark"></ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hoverable & Contextual -->
+                    <div class="col-12">
+                        <div class="panel">
+                            <h3 class="mb-3">Hoverable & Contextual</h3>
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox" class="form-check-input"></th>
+                                            <th>Ticket</th>
+                                            <th>Subject</th>
+                                            <th>Priority</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <nav class="d-flex justify-content-end mt-3">
+                                    <ul class="pagination" id="pagination-hover"></ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JS Client Table (Small Dataset) -->
+                    <div class="col-12">
+                        <div class="panel" style="border-left: 5px solid var(--color-accent);">
+                            <h3 class="mb-3">JS Client Table (Small Dataset)</h3>
+                            <p class="text-muted small">Demonstrating pagination with only 12 records (3 pages).</p>
+                            <div class="table-responsive">
+                                <table class="table" id="table-js-client">
+                                    <thead>
+                                        <tr>
+                                            <th>Client ID</th>
+                                            <th>Company Name</th>
+                                            <th>Contact Person</th>
+                                            <th>Country</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <nav class="d-flex justify-content-end mt-3">
+                                    <ul class="pagination" id="pagination-js-client"></ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
