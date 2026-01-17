@@ -284,12 +284,12 @@ input:checked+.pin-slider:before {
 .other-menus-topbar {
     display: flex;
     align-items: center;
-    padding-left: 250px;
-    padding-right: 15px;
-    gap: 20px;
+    gap: 15px;
+    /* Consistent gap */
 }
 
-.other-menus-topbar>div {
+/* Apply circle style only to icon containers, excluding user-profile */
+.other-menus-topbar>div:not(.user-profile) {
     width: 40px;
     height: 40px;
     display: flex;
@@ -301,9 +301,11 @@ input:checked+.pin-slider:before {
     color: var(--color-text-main);
 }
 
-.other-menus-topbar>div:hover {
+.other-menus-topbar>div:not(.user-profile):hover {
     background-color: rgba(88, 119, 147, 0.332);
 }
+
+
 
 .search-bar {
     display: flex;
@@ -311,7 +313,7 @@ input:checked+.pin-slider:before {
     background-color: var(--color-bg);
     border-radius: 30px;
     padding: 8px 15px;
-    width: 450px;
+    width: 200px;
     border: 2px solid var(--color-secondary);
 }
 
@@ -1073,4 +1075,181 @@ body.dark-mode .form-check-input:checked {
 
 .panel:hover {
     box-shadow: 0px 0px 15px rgba(84, 119, 146, 0.781);
+}
+
+/* Cards Section Styles */
+
+/* 1. Flip Card - Premium */
+.flip-card {
+    background-color: transparent;
+    width: 350px;
+    max-width: 400px;
+    height: 400px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.flip-card-front {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* 2. Glassmorphism Card - Premium */
+.glass-container {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+
+.glass-container:hover {
+    transform: translateY(-5px);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 40px;
+    max-width: 280px;
+    width: 100%;
+    transition: all 0.4s ease;
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(16px);
+}
+
+/* 3. Hover Expand Card - Premium */
+.expand-card {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    height: 400px;
+    background: var(--color-white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.expand-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.expand-card:hover .expand-img {
+    transform: scale(1.15);
+}
+
+.expand-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    opacity: 0.6;
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+.expand-card:hover::after {
+    opacity: 0.8;
+}
+
+.expand-content {
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    transition: bottom 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    text-align: left;
+    color: white;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+}
+
+.expand-card:hover .expand-content {
+    bottom: 0;
+}
+
+.expand-content h3 {
+    margin-bottom: 5px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.expand-content p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.expand-link {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: var(--color-accent);
+    padding: 8px 20px;
+    border-radius: 30px;
+    transition: background 0.3s;
+}
+
+.expand-link:hover {
+    background: var(--color-secondary);
+    color: white;
 }

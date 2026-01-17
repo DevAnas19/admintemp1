@@ -90,6 +90,10 @@
                 <i class="fa-solid fa-user menu-icon"></i>
                 <span>Profile</span>
             </li>
+            <li class="menu-item" data-target="Cards">
+                <i class="fa-solid fa-credit-card menu-icon"></i>
+                <span>Cards</span>
+            </li>
         </ul>
     </nav>
 
@@ -104,7 +108,7 @@
                 <input type="text" class="search-input" placeholder="Search...">
             </div>
 
-            <div class="other-menus-topbar">
+            <div class="other-menus-topbar gap-3">
                 <div class="dark-light">
                     <i class="fa-solid fa-moon"></i>
                 </div>
@@ -120,16 +124,16 @@
                 <div class="notification">
                     <i class="fa-solid fa-bell"></i>
                 </div>
-            </div>
 
-            <div class="user-profile">
-                <!-- Using a random avatar helper -->
-                <div style="text-align: right; margin-right: 10px;">
-                    <div style="font-weight: bold; font-size: 0.9rem;">John Doe</div>
-                    <div style="font-size: 0.8rem; color: #777;">Admin</div>
+                <div class="user-profile">
+                    <!-- Using a random avatar helper -->
+                    <div style="text-align: right; margin-right: 10px;">
+                        <div style="font-weight: bold; font-size: 0.9rem;">John Doe</div>
+                        <div style="font-size: 0.8rem; color: #777;">Admin</div>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=547792&color=fff" alt="User"
+                        class="user-img">
                 </div>
-                <img src="https://ui-avatars.com/api/?name=John+Doe&background=547792&color=fff" alt="User"
-                    class="user-img">
             </div>
         </header>
 
@@ -1110,6 +1114,65 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div id="Cards-section" class="section-content d-none">
+                <h2 class="mb-4" style="color: var(--color-primary);">Card Showcases</h2>
+                <div class="row g-4 d-flex justify-content-center">
+
+                    <!-- Card Type 1: Flip Card -->
+                    <div class="col-12 col-md-4 d-flex justify-content-center">
+                        <div class="panel h-100 d-flex flex-column align-items-center justify-content-center bg-transparent shadow-none"
+                            style="padding: 0;">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <i class="fa-solid fa-gift fa-3x mb-3"></i>
+                                        <h3>Surprise!</h3>
+                                        <p>Hover me to see what's inside.</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h3>50% OFF</h3>
+                                        <p>Use code: <strong>NEXUS50</strong></p>
+                                        <button class="btn btn-sm btn-light text-primary">Claim Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Type 2: Glassmorphism Card -->
+                    <div class="col-12 col-md-4 d-flex justify-content-center">
+                        <div class="glass-container w-100 d-flex align-items-center justify-content-center"
+                            style="background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); background-size: cover; border-radius: 15px; padding: 40px; min-height: 300px;">
+                            <div class="glass-card">
+                                <div class="glass-content text-center">
+                                    <img src="https://ui-avatars.com/api/?name=Jane+Doe&background=random"
+                                        class="rounded-circle mb-3" width="60" height="60"
+                                        style="border: 2px solid white;">
+                                    <h4 class="text-white">Jane Doe</h4>
+                                    <p class="text-white-50">UI/UX Designer</p>
+                                    <button class="btn btn-outline-light btn-sm mt-2">Follow</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Type 3: Hover Expand Card -->
+                    <div class="col-12 col-md-4 d-flex justify-content-center">
+                        <div class="expand-card">
+                            <div class="expand-img"
+                                style="background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');">
+                            </div>
+                            <div class="expand-content">
+                                <h3>Nike Air</h3>
+                                <p>Super comfortable running shoes with breathable mesh and responsive cushioning.</p>
+                                <a href="#" class="expand-link">Buy Now <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
