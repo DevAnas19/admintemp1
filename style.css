@@ -313,7 +313,7 @@ input:checked+.pin-slider:before {
     background-color: var(--color-bg);
     border-radius: 30px;
     padding: 8px 15px;
-    width: 200px;
+    width: 500px;
     border: 2px solid var(--color-secondary);
 }
 
@@ -1082,8 +1082,8 @@ body.dark-mode .form-check-input:checked {
 /* 1. Flip Card - Premium */
 .flip-card {
     background-color: transparent;
-    width: 350px;
-    max-width: 400px;
+    width: 300px;
+    max-width: 300px;
     height: 400px;
     perspective: 1000px;
 }
