@@ -1253,3 +1253,57 @@ body.dark-mode .form-check-input:checked {
     background: var(--color-secondary);
     color: white;
 }
+
+/* ================= EMAIL MODULE ================= */
+
+.email-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.email-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+}
+
+.email-item:hover {
+  background-color: #f8f9fa;
+}
+
+.email-receiver-text {
+  font-weight: 600;
+  min-width: 160px;
+}
+
+.email-subject-text {
+  color: #555;
+  flex-grow: 1;
+}
+
+.email-date-text {
+  font-size: 0.85rem;
+  color: #777;
+  white-space: nowrap;
+}
+
+/* Preview panel text */
+.preview-text h3 {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.meta-text {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.main-text p {
+  line-height: 1.6;
+  margin-top: 10px;
+}
