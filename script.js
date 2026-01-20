@@ -660,3 +660,48 @@ function changePage(tableId, newPage) {
     renderTable(tableId, newPage);
     renderPagination(tableId);
 }
+
+// email
+const emailItems = document.querySelectorAll('.email-item');
+
+emailItems.forEach(email => {
+  email.addEventListener('click', () => {
+
+    // remove active from all emails
+    emailItems.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    // add active to clicked email
+    email.classList.add('active');
+
+  });
+});
+
+// preview elements
+const previewColumn = document.querySelector('.preview-hidden');
+const previewTitle = document.querySelector('.preview-text h3');
+const previewMeta = document.querySelector('.meta-text span');
+const previewBody = document.querySelector('.main-text p');
+
+// attach preview update to email click
+emailItems.forEach(email => {
+  email.addEventListener('click', () => {
+
+    // read data from clicked email
+    const sender = email.dataset.sender;
+    const subject = email.dataset.subject;
+    const date = email.dataset.date;
+    const body = email.dataset.body;
+
+    // update preview content
+    previewTitle.textContent = subject;
+    previewMeta.textContent = `From: ${sender} · ${date}`;
+    previewBody.textContent = body;
+
+    // show preview
+    previewColumn.classList.remove('preview-hidden');
+
+  });
+});
+

@@ -1307,3 +1307,17 @@ body.dark-mode .form-check-input:checked {
   line-height: 1.6;
   margin-top: 10px;
 }
+
+.preview-hidden {
+  display: none;
+}
+.email-item.active {
+  background-color: #eef2f7;
+  border-left: 4px solid var(--color-secondary);
+}
+
+.email-item.active .email-receiver-text,
+.email-item.active .email-subject-text {
+  font-weight: 600;
+  color: var(--color-primary);
+}
