@@ -705,3 +705,56 @@ emailItems.forEach(email => {
     });
 });
 
+
+// Initialize Tooltips (Safe check)
+document.addEventListener('DOMContentLoaded', () => {
+    // Re-initialize tooltips if not already done (some might be double init but safe)
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+    // Unified Dropdown Logic via Delegation
+    const dropdownMap = {
+        'shortcutTrigger': 'shortcutDropdown',
+        'notificationTrigger': 'notificationDropdown',
+        'profileTrigger': 'profileDropdown'
+    };
+
+    document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('#shortcutTrigger, #notificationTrigger, #profileTrigger');
+        const menuClick = e.target.closest('.navbar-dropdown');
+
+        // If clicking inside a open menu, do nothing (allow interaction)
+        if (menuClick) return;
+
+        // If clicking a trigger
+        if (trigger) {
+            // Prevent default only if necessary, but here we just toggle
+            // e.stopPropagation(); // Not needed with this logic structure
+
+            const targetMenuId = dropdownMap[trigger.id];
+            const targetMenu = document.getElementById(targetMenuId);
+
+            // Close others
+            Object.values(dropdownMap).forEach(menuId => {
+                if (menuId !== targetMenuId) {
+                    const el = document.getElementById(menuId);
+                    if (el) el.classList.remove('show');
+                }
+            });
+
+            // Toggle current
+            if (targetMenu) {
+                targetMenu.classList.toggle('show');
+            }
+            return;
+        }
+
+        // If clicking outside (not trigger, not menu) -> Close All
+        Object.values(dropdownMap).forEach(menuId => {
+            const el = document.getElementById(menuId);
+            if (el) el.classList.remove('show');
+        });
+    });
+});

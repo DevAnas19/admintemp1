@@ -111,23 +111,79 @@
       </div>
 
       <div class="other-menus-topbar gap-3">
-        <div class="dark-light">
+        <div class="dark-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dark Mode">
           <i class="fa-solid fa-moon"></i>
         </div>
 
-        <div class="language">
+        <div class="language" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Translation">
           <i class="fa-solid fa-language"></i>
         </div>
 
-        <div class="shortcut">
+        <div class="shortcut position-relative" id="shortcutTrigger" data-bs-toggle="tooltip" data-bs-placement="bottom"
+          title="Shortcuts">
           <i class="fa-solid fa-ellipsis"></i>
+          <!-- Shortcut Dropdown -->
+          <div class="navbar-dropdown shortcut-dropdown" id="shortcutDropdown">
+            <div class="p-3 border-bottom">
+              <h6 class="mb-0 fw-bold">Shortcuts</h6>
+            </div>
+            <div class="p-2 d-grid gap-2" style="grid-template-columns: 1fr 1fr;">
+              <div class="text-center p-2 rounded hover-bg">
+                <i class="fa-solid fa-box text-primary mb-1"></i>
+                <div class="small">Add Product</div>
+              </div>
+              <div class="text-center p-2 rounded hover-bg">
+                <i class="fa-solid fa-file-invoice text-success mb-1"></i>
+                <div class="small">Invoices</div>
+              </div>
+              <div class="text-center p-2 rounded hover-bg">
+                <i class="fa-solid fa-users text-info mb-1"></i>
+                <div class="small">Users</div>
+              </div>
+              <div class="text-center p-2 rounded hover-bg">
+                <i class="fa-solid fa-chart-pie text-danger mb-1"></i>
+                <div class="small">Reports</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="notification">
+        <div class="notification position-relative" id="notificationTrigger" data-bs-toggle="tooltip"
+          data-bs-placement="bottom" title="Notifications">
           <i class="fa-solid fa-bell"></i>
+          <!-- Notification Dropdown -->
+          <div class="navbar-dropdown notification-dropdown" id="notificationDropdown">
+            <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+              <h6 class="mb-0 fw-bold">Notifications</h6>
+              <small class="text-muted">3 New</small>
+            </div>
+            <div class="list-group list-group-flush">
+              <a href="#" class="list-group-item list-group-item-action border-0 p-3">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="bg-light rounded-circle p-2 text-primary"><i class="fa-solid fa-user-plus"></i></div>
+                  <div class="small">
+                    <div class="fw-semibold">New User Registered</div>
+                    <div class="text-muted" style="font-size: 0.75rem;">5 mins ago</div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action border-0 p-3">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="bg-light rounded-circle p-2 text-success"><i class="fa-solid fa-cart-shopping"></i></div>
+                  <div class="small">
+                    <div class="fw-semibold">New Order Received</div>
+                    <div class="text-muted" style="font-size: 0.75rem;">1 hour ago</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="p-2 text-center border-top">
+              <a href="#" class="small text-decoration-none">View All</a>
+            </div>
+          </div>
         </div>
 
-        <div class="user-profile">
+        <div class="user-profile position-relative" id="profileTrigger">
           <!-- Using a random avatar helper -->
           <div style="text-align: right; margin-right: 10px">
             <div style="font-weight: bold; font-size: 0.9rem">John Doe</div>
@@ -135,6 +191,19 @@
           </div>
           <img src="https://ui-avatars.com/api/?name=John+Doe&background=547792&color=fff" alt="User"
             class="user-img" />
+
+          <!-- Profile Dropdown -->
+          <div class="navbar-dropdown profile-dropdown" id="profileDropdown">
+            <div class="p-3 border-bottom text-center">
+              <div class="fw-bold fs-6">John Doe</div>
+              <small class="text-muted">Admin</small>
+            </div>
+            <div class="p-2">
+              <button class="btn btn-sm btn-outline-danger w-100">
+                <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
