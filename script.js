@@ -665,17 +665,17 @@ function changePage(tableId, newPage) {
 const emailItems = document.querySelectorAll('.email-item');
 
 emailItems.forEach(email => {
-  email.addEventListener('click', () => {
+    email.addEventListener('click', () => {
 
-    // remove active from all emails
-    emailItems.forEach(item => {
-      item.classList.remove('active');
+        // remove active from all emails
+        emailItems.forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // add active to clicked email
+        email.classList.add('active');
+
     });
-
-    // add active to clicked email
-    email.classList.add('active');
-
-  });
 });
 
 // preview elements
@@ -686,22 +686,22 @@ const previewBody = document.querySelector('.main-text p');
 
 // attach preview update to email click
 emailItems.forEach(email => {
-  email.addEventListener('click', () => {
+    email.addEventListener('click', () => {
 
-    // read data from clicked email
-    const sender = email.dataset.sender;
-    const subject = email.dataset.subject;
-    const date = email.dataset.date;
-    const body = email.dataset.body;
+        // read data from clicked email
+        const sender = email.dataset.sender;
+        const subject = email.dataset.subject;
+        const date = email.dataset.date;
+        const body = email.dataset.body;
 
-    // update preview content
-    previewTitle.textContent = subject;
-    previewMeta.textContent = `From: ${sender} · ${date}`;
-    previewBody.textContent = body;
+        // update preview content
+        previewTitle.textContent = subject;
+        previewMeta.textContent = `From: ${sender} · ${date}`;
+        previewBody.textContent = body;
 
-    // show preview
-    previewColumn.classList.remove('preview-hidden');
+        // show preview
+        previewColumn.classList.remove('preview-hidden');
 
-  });
+    });
 });
 
