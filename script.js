@@ -661,48 +661,43 @@ function changePage(tableId, newPage) {
     renderPagination(tableId);
 }
 
-// email
+
+
+// ================= EMAIL MODULE =================
+
+// elements
 const emailItems = document.querySelectorAll('.email-item');
+const emailList = document.querySelector('.email-list-wrapper');
+const emailPreview = document.querySelector('.email-preview-wrapper');
 
+// preview content
+const previewSubject = document.getElementById('preview-subject');
+const previewMeta = document.getElementById('preview-meta');
+const previewBody = document.getElementById('preview-body');
+
+// email click
 emailItems.forEach(email => {
-    email.addEventListener('click', () => {
+  email.addEventListener('click', () => {
 
-        // remove active from all emails
-        emailItems.forEach(item => {
-            item.classList.remove('active');
-        });
+    // active state
+    emailItems.forEach(item => item.classList.remove('active'));
+    email.classList.add('active');
 
-        // add active to clicked email
-        email.classList.add('active');
+    // read data
+    const sender = email.dataset.sender;
+    const subject = email.dataset.subject;
+    const date = email.dataset.date;
+    const body = email.dataset.body;
 
-    });
-});
+    // update preview
+    previewSubject.textContent = subject;
+    previewMeta.textContent = `From: ${sender} · ${date}`;
+    previewBody.textContent = body;
 
-// preview elements
-const previewColumn = document.querySelector('.preview-hidden');
-const previewTitle = document.querySelector('.preview-text h3');
-const previewMeta = document.querySelector('.meta-text span');
-const previewBody = document.querySelector('.main-text p');
-
-// attach preview update to email click
-emailItems.forEach(email => {
-    email.addEventListener('click', () => {
-
-        // read data from clicked email
-        const sender = email.dataset.sender;
-        const subject = email.dataset.subject;
-        const date = email.dataset.date;
-        const body = email.dataset.body;
-
-        // update preview content
-        previewTitle.textContent = subject;
-        previewMeta.textContent = `From: ${sender} · ${date}`;
-        previewBody.textContent = body;
-
-        // show preview
-        previewColumn.classList.remove('preview-hidden');
-
-    });
+    // toggle view (Gmail behavior)
+    emailList.classList.add('preview-hidden');
+    emailPreview.classList.remove('preview-hidden');
+  });
 });
 
 

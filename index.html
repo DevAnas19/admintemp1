@@ -1338,104 +1338,153 @@
             </div>
           </div>
         </div>
+      </div>      <!-- Email Section -->
+<div id="email-section" class="section-content d-none">
+  <h2 class="mb-4" style="color: var(--color-primary)">Email</h2>
+
+  <div class="row">
+
+    <!-- LEFT: Mailboxes -->
+    <div class="col-12 col-md-3">
+      <h6 class="mb-3">Mailboxes</h6>
+      <ul class="email-mailbox">
+        <li class="email-mailbox-item active">
+          <i class="fa-solid fa-inbox"></i> Inbox
+        </li>
+        <li class="email-mailbox-item">
+          <i class="fa-solid fa-paper-plane"></i> Sent
+        </li>
+        <li class="email-mailbox-item">
+          <i class="fa-regular fa-file"></i> Draft
+        </li>
+        <li class="email-mailbox-item">
+          <i class="fa-solid fa-triangle-exclamation"></i> Spam
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: Inbox + Preview -->
+    <div class="col-12 col-md-9">
+
+      <!-- Inbox list -->
+      <div class="email-list-wrapper">
+        <ul class="email-list">
+
+          <li class="email-item unread"
+              data-sender="husen@gmail.com"
+              data-subject="Project update"
+              data-date="7 Jan"
+              data-body="Hi team, this is a quick update on the project status. Regards, Husen">
+
+            <input type="checkbox" class="email-check">
+            <i class="fa-regular fa-star email-star"></i>
+
+            <span class="email-sender">husen@gmail.com</span>
+
+            <div class="email-content">
+              <span class="email-subject">Project update</span>
+              <span class="email-snippet">— Please review the latest changes</span>
+            </div>
+
+            <span class="email-date">7 Jan</span>
+          </li>
+
+          <li class="email-item unread"
+              data-sender="dave@gmail.com"
+              data-subject="Module update"
+              data-date="10 Jan"
+              data-body="Module updates are ready for review.">
+
+            <input type="checkbox" class="email-check">
+            <i class="fa-regular fa-star email-star"></i>
+
+            <span class="email-sender">dave@gmail.com</span>
+
+            <div class="email-content">
+              <span class="email-subject">Module update</span>
+              <span class="email-snippet">— Updates ready for review</span>
+            </div>
+
+            <span class="email-date">10 Jan</span>
+          </li>
+           <li class="email-item unread"
+              data-sender="NET n YAHUU@gmail.com"
+              data-subject="Module update"
+              data-date="10 Jan"
+              data-body="Module updates are ready for review.">
+
+            <input type="checkbox" class="email-check">
+            <i class="fa-regular fa-star email-star"></i>
+
+            <span class="email-sender">NET n YAHUU@gmail.com</span>
+
+            <div class="email-content">
+              <span class="email-subject">stock update</span>
+              <span class="email-snippet">— Updates ready for review</span>
+            </div>
+
+            <span class="email-date">15 Jan</span>
+          </li>
+ <li class="email-item unread"
+              data-sender="kirk@gmail.com"
+              data-subject="Module update"
+              data-date="10 Jan"
+              data-body="Module updates are ready for review.">
+
+            <input type="checkbox" class="email-check">
+            <i class="fa-regular fa-star email-star"></i>
+
+            <span class="email-sender">kirk@gmail.com</span>
+
+            <div class="email-content">
+              <span class="email-subject">Module update</span>
+              <span class="email-snippet">— Updates ready for review</span>
+            </div>
+
+            <span class="email-date">10 Jan</span>
+          </li>
+
+
+          <li class="email-item"
+              data-sender="hr@company.com"
+              data-subject="Leave policy reminder"
+              data-date="5 Jan"
+              data-body="Please review the updated leave policy document.">
+
+            <input type="checkbox" class="email-check">
+            <i class="fa-regular fa-star email-star"></i>
+
+            <span class="email-sender">hr@company.com</span>
+
+            <div class="email-content">
+              <span class="email-subject">Leave policy reminder</span>
+              <span class="email-snippet">— Updated policy attached</span>
+            </div>
+
+            <span class="email-date">5 Jan</span>
+          </li>
+
+        </ul>
       </div>
-      <!-- Email Section -->
-      <div id="email-section" class="section-content d-none">
-        <h2 class="mb-4" style="color: var(--color-primary)">Email</h2>
 
-        <div class="row g-4">
-          <!-- Mailbox Column -->
-          <div class="col-12 col-md-3">
-            <div class="panel">
-              <h5 class="mb-3">Mailboxes</h5>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item active">
-                  <i class="fa-solid fa-inbox me-2"></i> Inbox
-                </li>
-                <li class="list-group-item">
-                  <i class="fa-solid fa-paper-plane me-2"></i> Sent
-                </li>
-                <li class="list-group-item">
-                  <i class="fa-regular fa-file me-2"></i> Draft
-                </li>
-                <li class="list-group-item">
-                  <i class="fa-solid fa-triangle-exclamation me-2"></i> Spam
-                </li>
-              </ul>
-            </div>
-          </div>
+      <!-- Preview panel -->
+      <div class="email-preview-wrapper preview-hidden">
+        <div class="preview-text">
+          <h3 id="preview-subject"></h3>
+        </div>
 
-          <!-- Email List Column -->
-          <div class="col-12 col-md-4">
-            <div class="panel">
-              <h5>Emails</h5>
-              <ul class="email-list">
-                <li class="email-item" data-sender="husen@gmail.com" data-subject="Project update" data-date="7 Jan"
-                  data-body="Hi team,
+        <div class="meta-text">
+          <span id="preview-meta"></span>
+        </div>
 
-This is a quick update on the project status. The email module UI has been integrated into the dashboard layout and is ready for further enhancement.
-
-Regards,
-Husen">
-                  <span class="email-receiver-text">husen@gmail.com</span>
-                  <span class="email-subject-text">Project update</span>
-                  <span class="email-date-text">7 Jan</span>
-                </li>
-                <li class="email-item" data-sender="dave@gmail.com" data-subject="Module update" data-date="10 Jan"
-                  data-body="Hi team,
-
-This is a quick update on the project status. The email module UI has been integrated into the dashboard layout and is ready for further enhancement.
-
-Regards,
-Husen">
-                  <span class="email-receiver-text">dave@gmail.com</span>
-                  <span class="email-subject-text">Module update</span>
-                  <span class="email-date-text">10 Jan</span>
-                </li>
-                <li class="email-item" data-sender="anas@gmail.com" data-subject="Project update" data-date="8 Jan"
-                  data-body="Hi team,
-
-This is a quick update on the project status. The email module UI has been integrated into the dashboard layout and is ready for further enhancement.
-
-Regards,
-Husen">
-                  <span class="email-receiver-text">anas@gmail.com</span>
-                  <span class="email-subject-text">Intern update</span>
-                  <span class="email-date-text">7 Jan</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Email Preview Column -->
-          <div class="col-12 col-md-5">
-            <div class="col-12 col-md-5 preview-hidden">
-              <div class="panel">
-                <h5>Preview</h5>
-
-                <div class="preview-text">
-                  <h3>Project update</h3>
-                </div>
-
-                <div class="meta-text">
-                  <span>From: husen@gmail.com · 7 Jan</span>
-                </div>
-
-                <div class="main-text">
-                  <p>
-                    Hi team,<br /><br />
-                    This is a quick update on the project status. The email
-                    module UI has been integrated into the dashboard layout
-                    and is ready for further enhancement.<br /><br />
-                    Regards,<br />
-                    Husen
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="main-text">
+          <p id="preview-body"></p>
         </div>
       </div>
+
+    </div>
+  </div>
+</div>
 
       <footer>
         <div class="footer-container">
