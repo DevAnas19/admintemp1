@@ -677,27 +677,27 @@ const previewBody = document.getElementById('preview-body');
 
 // email click
 emailItems.forEach(email => {
-  email.addEventListener('click', () => {
+    email.addEventListener('click', () => {
 
-    // active state
-    emailItems.forEach(item => item.classList.remove('active'));
-    email.classList.add('active');
+        // active state
+        emailItems.forEach(item => item.classList.remove('active'));
+        email.classList.add('active');
 
-    // read data
-    const sender = email.dataset.sender;
-    const subject = email.dataset.subject;
-    const date = email.dataset.date;
-    const body = email.dataset.body;
+        // read data
+        const sender = email.dataset.sender;
+        const subject = email.dataset.subject;
+        const date = email.dataset.date;
+        const body = email.dataset.body;
 
-    // update preview
-    previewSubject.textContent = subject;
-    previewMeta.textContent = `From: ${sender} · ${date}`;
-    previewBody.textContent = body;
+        // update preview
+        previewSubject.textContent = subject;
+        previewMeta.textContent = `From: ${sender} · ${date}`;
+        previewBody.textContent = body;
 
-    // toggle view (Gmail behavior)
-    emailList.classList.add('preview-hidden');
-    emailPreview.classList.remove('preview-hidden');
-  });
+        // toggle view (Gmail behavior)
+        emailList.classList.add('preview-hidden');
+        emailPreview.classList.remove('preview-hidden');
+    });
 });
 
 

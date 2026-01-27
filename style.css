@@ -1253,173 +1253,174 @@ body.dark-mode .form-check-input:checked {
     background: var(--color-secondary);
     color: white;
 }
+
 /* ================= EMAIL MODULE ================= */
 
 /* Reset panel look */
 #email-section {
-  background: #ffffff;
-  border-radius:15px;
-  padding: 1rem;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 1rem;
 }
 
 /* ================= MAILBOX (LEFT) ================= */
 
 .email-mailbox {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
 }
 
 .email-mailbox-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-  padding: 8px 12px;
-  margin-bottom: 4px;
+    padding: 8px 12px;
+    margin-bottom: 4px;
 
-  font-size: 14px;
-  color: #202124;
-  border-radius: 18px;
-  cursor: pointer;
+    font-size: 14px;
+    color: #202124;
+    border-radius: 18px;
+    cursor: pointer;
 }
 
 .email-mailbox-item:hover {
-  background-color: #f1f3f4;
+    background-color: #f1f3f4;
 }
 
 .email-mailbox-item.active {
-  background-color: #e8f0fe;
-  font-weight: 600;
+    background-color: #e8f0fe;
+    font-weight: 600;
 }
 
 .email-mailbox-item i {
-  color: #5f6368;
-  font-size: 14px;
+    color: #5f6368;
+    font-size: 14px;
 }
 
 /* ================= EMAIL LIST ================= */
 
 .email-list-wrapper {
-  max-width: 1150px;
-  margin: 0 auto;
+    max-width: 1150px;
+    margin: 0 auto;
 }
 
 .email-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* Email row */
 .email-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-  padding: 8px 12px;
-  font-size: 14px;
-  line-height: 20px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 20px;
 
-  cursor: pointer;
-  background-color: #ffffff;
-  border-bottom: 1px solid #eceff1;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eceff1;
 }
 
 /* Hover */
 .email-item:hover {
-  background-color: #f5f7f7;
+    background-color: #f5f7f7;
 }
 
 /* Unread */
 .email-item.unread .email-sender,
 .email-item.unread .email-subject {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 /* Checkbox */
 .email-check {
-  margin-left: 4px;
+    margin-left: 4px;
 }
 
 /* Star */
 .email-star {
-  color: #5f6368;
-  font-size: 14px;
+    color: #5f6368;
+    font-size: 14px;
 }
 
 .email-star:hover {
-  color: #fbbc04;
+    color: #fbbc04;
 }
 
 /* Sender */
 .email-sender {
-  min-width: 180px;
-  white-space: nowrap;
-  color: #202124;
+    min-width: 180px;
+    white-space: nowrap;
+    color: #202124;
 }
 
 /* Subject + snippet */
 .email-content {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .email-subject {
-  color: #202124;
+    color: #202124;
 }
 
 .email-snippet {
-  color: #5f6368;
-  margin-left: 4px;
+    color: #5f6368;
+    margin-left: 4px;
 }
 
 /* Date */
 .email-date {
-  font-size: 12px;
-  color: #5f6368;
-  white-space: nowrap;
-  margin-left: 12px;
+    font-size: 12px;
+    color: #5f6368;
+    white-space: nowrap;
+    margin-left: 12px;
 }
 
 /* ================= PREVIEW ================= */
 
 .email-preview-wrapper {
-  padding: 20px 24px;
-  background-color: #ffffff;
+    padding: 20px 24px;
+    background-color: #ffffff;
 }
 
 .preview-hidden {
-  display: none;
+    display: none;
 }
 
 .preview-text h3 {
-  font-size: 20px;
-  font-weight: 400;
-  color: #202124;
-  margin-bottom: 6px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #202124;
+    margin-bottom: 6px;
 }
 
 .meta-text {
-  font-size: 13px;
-  color: #5f6368;
-  margin-bottom: 18px;
+    font-size: 13px;
+    color: #5f6368;
+    margin-bottom: 18px;
 }
 
 .main-text p {
-  font-size: 14px;
-  line-height: 22px;
-  color: #202124;
+    font-size: 14px;
+    line-height: 22px;
+    color: #202124;
 }
 
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 992px) {
-  .email-preview-wrapper {
-    display: none;
-  }
+    .email-preview-wrapper {
+        display: none;
+    }
 }
 
 
@@ -1431,17 +1432,19 @@ body.dark-mode .form-check-input:checked {
 
 .profile-dropdown {
     position: absolute;
-    top: 110%; /* Slightly below */
+    top: 110%;
+    /* Slightly below */
     right: 0;
     width: 200px;
     background: var(--color-white);
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    display: none; /* Hidden by default */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    display: none;
+    /* Hidden by default */
     z-index: 1000;
     overflow: hidden;
     animation: slideDown 0.3s ease forwards;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .profile-dropdown.show {
@@ -1453,11 +1456,13 @@ body.dark-mode .form-check-input:checked {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 /* Dark Mode Support for Dropdown */
 body.dark-mode .profile-dropdown {
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1490,6 +1495,7 @@ body.dark-mode .profile-dropdown {
 .bs-tooltip-auto[data-popper-placement^=left] .tooltip-arrow::before {
     border-left-color: var(--color-secondary) !important;
 }
+
 /* Generalized Navbar Dropdown */
 .navbar-dropdown {
     position: absolute;
