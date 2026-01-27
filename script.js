@@ -752,4 +752,83 @@ document.addEventListener('DOMContentLoaded', () => {
             if (el) el.classList.remove('show');
         });
     });
+
+    // Fetch and display logged-in user data
+    const API_URL = "http://127.0.0.1:8000";
+    const token = localStorage.getItem('token');
+
+    if (token) {
+        fetch(`${API_URL}/users/me`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    // Token is invalid, redirect to login
+                    localStorage.removeItem('token');
+                    window.location.href = 'landing.html';
+                    return;
+                }
+                return response.json();
+            })
+            .then(user => {
+                if (user) {
+                    // Update topbar user info
+                    const topbarUserName = document.querySelector('.user-profile div div:first-child');
+                    const topbarUserAvatar = document.querySelector('.user-img');
+
+                    if (topbarUserName) {
+                        topbarUserName.textContent = user.full_name || user.username;
+                    }
+                    if (topbarUserAvatar) {
+                        topbarUserAvatar.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.username)}&background=547792&color=fff`;
+                    }
+
+                    // Update profile dropdown
+                    const dropdownUserName = document.querySelector('#profileDropdown .fw-bold');
+                    if (dropdownUserName) {
+                        dropdownUserName.textContent = user.full_name || user.username;
+                    }
+
+                    // Update profile section
+                    const profileHeaderName = document.querySelector('.profile-title h3');
+                    const profileHeaderImg = document.querySelector('.profile-img');
+                    const profileMobileName = document.querySelector('.d-md-none h3');
+
+                    if (profileHeaderName) {
+                        profileHeaderName.textContent = user.full_name || user.username;
+                    }
+                    if (profileHeaderImg) {
+                        profileHeaderImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.username)}&background=0D8ABC&color=fff&size=128`;
+                    }
+                    if (profileMobileName) {
+                        profileMobileName.textContent = user.full_name || user.username;
+                    }
+
+                    // Update profile "About" section
+                    const profileFullName = document.querySelector('.profile-body .list-unstyled li:first-child span:last-child');
+                    const profileEmail = document.querySelector('.profile-body .list-unstyled:nth-of-type(2) li:last-child span:last-child');
+
+                    if (profileFullName) {
+                        profileFullName.textContent = user.full_name || user.username;
+                    }
+                    if (profileEmail) {
+                        profileEmail.textContent = user.email;
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    }
+
+    // Add logout functionality
+    const logoutBtn = document.querySelector('.btn-outline-danger');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            window.location.href = 'landing.html';
+        });
+    }
 });

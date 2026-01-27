@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NEXUS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #213448;
+            --color-secondary: #547792;
+            --color-bg: #EAE0CF;
+            --color-white: #ffffff;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
+            padding: 2rem;
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--color-primary);
+        }
+
+        .brand-header i {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-secondary);
+        }
+
+        .form-control {
+            padding: 0.8rem;
+            border-radius: 8px;
+        }
+
+        .btn-login {
+            background-color: var(--color-secondary);
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 1rem;
+            transition: 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: var(--color-primary);
+            box-shadow: 0 5px 15px rgba(84, 119, 146, 0.4);
+        }
+
+        #error-msg {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <div class="brand-header">
+            <i class="fa-solid fa-cube"></i>
+            <h2>NEXUS</h2>
+            <p class="text-muted">Welcome back!</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" required>
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-login">Sign In</button>
+            <div id="error-msg"></div>
+
+            <div class="text-center mt-4">
+                <span class="text-muted">Don't have an account?</span>
+                <a href="register.html"
+                    style="color: var(--color-secondary); text-decoration: none; font-weight: bold;">Register</a>
+            </div>
+            <div class="text-center mt-2">
+                <a href="landing.html" class="text-muted small">Back to Home</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const API_URL = "http://127.0.0.1:8000";
+
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('error-msg');
+
+            // Setup Form Data as required by OAuth2PasswordRequestForm
+            const formData = new FormData();
+            formData.append("username", email); // server expects 'username' even if it's email
+            formData.append("password", password);
+
+            try {
+                const response = await fetch(`${API_URL}/token`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('token', data.access_token);
+                    window.location.href = 'index.html';
+                } else {
+                    const err = await response.json();
+                    errorMsg.textContent = err.detail || 'Login failed';
+                    errorMsg.style.display = 'block';
+                }
+            } catch (error) {
+                console.error(error);
+                errorMsg.textContent = 'Network error during login';
+                errorMsg.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,11 +1,194 @@
-# Dependencies
-node_modules/
-.pnp
-.pnp.js
+# ==========================================
+# NEXUS Admin Dashboard - .gitignore
+# ==========================================
 
-# Testing
-coverage/
+# ============================================
+# 🔒 SENSITIVE FILES (NEVER PUSH THESE!)
+# ============================================
 
-# OS misc
-.DS_Store
+# Environment variables (contains passwords, secret keys)
+.env
+.env.local
+.env.production
+*.env
+
+# Database files (if using SQLite locally)
+*.db
+*.sqlite
+*.sqlite3
+
+# Secret keys and credentials
+secrets.json
+credentials.json
+
+
+# ============================================
+# 🐍 PYTHON FILES
+# ============================================
+
+# Virtual Environment (venv folder)
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+
+# ============================================
+# 💻 IDE & EDITOR FILES
+# ============================================
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+
+# ============================================
+# 🖥️ OPERATING SYSTEM FILES
+# ============================================
+
+# Windows
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.directory
+
+
+# ============================================
+# 📦 NODE MODULES (if you add Node.js later)
+# ============================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+
+# ============================================
+# 🗄️ DATABASE BACKUPS
+# ============================================
+
+*.sql
+*.dump
+backups/
+
+
+# ============================================
+# 📝 LOG FILES
+# ============================================
+
+*.log
+logs/
+*.log.*
+
+
+# ============================================
+# 🚀 DEPLOYMENT FILES
+# ============================================
+
+# Docker
+docker-compose.override.yml
+
+# Heroku
+.heroku/
+
+
+# ============================================
+# 🧪 TEMPORARY & TEST FILES
+# ============================================
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Test files
+test_*.py
+*_test.py
+
+
+# ============================================
+# 📁 PROJECT-SPECIFIC FILES
+# ============================================
+
+# Your database creation script (contains password)
+# Uncomment if you don't want to share it:
+# create_db.py
+
+# Walkthrough (if you don't want to share setup notes)
+# walkthrough.md
+
+# Any personal notes
+notes.txt
+TODO.txt
