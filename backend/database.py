@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 # Default to local postgres if not set in environment
-SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:YOUE_PASSWORD@localhost:5432/nexus_db")
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:Anas%40Dev19@localhost:5432/nexus_db")
 
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)

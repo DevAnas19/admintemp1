@@ -16,11 +16,11 @@ class UserLogin(BaseModel):
 
 class UserResponse(UserBase):
     id: int
-    is_active: bool
+    is_active: int
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class Token(BaseModel):
     access_token: str
