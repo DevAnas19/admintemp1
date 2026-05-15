@@ -11,7 +11,7 @@ services:
           name: nexus-db
           property: connectionString
 
-  - type: psql
-    name: nexus-db
+databases:
+  - name: nexus-db
     region: ohio
     plan: free
