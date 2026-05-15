@@ -754,7 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Fetch and display logged-in user data
-    const API_URL = "http://127.0.0.1:8000";
+    // const API_URL = "http://127.0.0.1:8000"; // Now provided globally by config.js
     const token = localStorage.getItem('token');
 
     if (token) {
